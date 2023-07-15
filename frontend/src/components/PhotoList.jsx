@@ -1,11 +1,20 @@
 import React from 'react';
 
 import '../styles/PhotoList.scss';
+import PhotoListItem from './PhotoListItem';
 
-const PhotoList = () => {
-  <ul className="photo-list">
-    {/* Insert React */}
-  </ul>;
+
+const PhotoList = (props) => {
+  return (
+    <ul className="photo-list">
+      {props.photos.map((photo) =>
+        <PhotoListItem
+          key={photo.id}
+          photo={photo}
+        />
+      )}
+    </ul>
+  );
 };
 
 PhotoList.defaultProps = {
@@ -41,7 +50,7 @@ PhotoList.defaultProps = {
         "id": "2",
         "username": "exampleuser",
         "name": "Joe Example",
-        "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
+        "profile": `${process.env.PUBLIC_URL}/profile-2.jpg`
       }
     },
     {
@@ -58,7 +67,7 @@ PhotoList.defaultProps = {
         "id": "3",
         "username": "exampleuser",
         "name": "Joe Example",
-        "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
+        "profile": `${process.env.PUBLIC_URL}/profile-3.jpg`
       }
     }
   ]

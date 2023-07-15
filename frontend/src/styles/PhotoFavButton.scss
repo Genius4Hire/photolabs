@@ -1,12 +1,11 @@
 .photo-list__fav-icon {
   position: relative;
-  top: 0px;
-  right: 0px;
+  top: 8px;
+  right: -8px;
   cursor: pointer;
-  margin-bottom: -0px;
+  margin-bottom: -30px;
   border-width: 0.1px;
   background-color: #EEEEEE;
-
   width: 32px;
   height: 32px;
   text-align: center;
@@ -15,6 +14,6 @@
 
 .photo-list__fav-icon-svg {
   position: relative;
-  top: 6px;
-  right: -1px;
+  top: 0.3em;
+  left: 0.07em;
 }

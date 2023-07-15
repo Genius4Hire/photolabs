@@ -7,7 +7,7 @@ import '../styles/PhotoFavButton.scss';
 import FavIcon from '../components/FavIcon';
 
 
-const PhotoFavButton = () => {
+const PhotoFavButton = (props) => {
 
   const [liked, setLiked] = useState(false);
 
@@ -15,22 +15,18 @@ const PhotoFavButton = () => {
     setLiked(!liked);
   };
 
-  // const classModifier = liked  ?  'photo-list__fav-icon-svg' : 'photo-list__fav-icon';
-  // const classModifier = "photo-list__fav-icon";
-
   return (
-    <div className={'photo-list__fav-icon'} onClick={likeClickHandler}>
-      <div className={'photo-list__fav-icon-svg'}>
+    <div className="photo-list__fav-icon" onClick={likeClickHandler}>
+      <div className="photo-list__fav-icon-svg">
         <FavIcon
-          // className={classModifier}
-          liked={liked}
+          fill={liked ? '#db0d0d' : '#EEEEEE'}
           width={20}
           height={17}
         />
-        {/* {classModifier} */}
       </div>
     </div>
   );
+
 };
 
 export default PhotoFavButton;
