@@ -47,6 +47,10 @@
   margin-left: 8px;
 }
 
+.photo-list__user-info a {
+  text-decoration:none;  /* Get rid of underline for link */
+}
+
 .photo-list__user-location {
   color: #838383;
 }
