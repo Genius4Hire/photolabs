@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../styles/PhotoDetailsModal.scss'
+import '../styles/PhotoDetailsModal.scss';
 
 export const PhotoDetailsModal = () => (
   <div className='photo-details-modal'>
@@ -12,7 +12,7 @@ export const PhotoDetailsModal = () => (
         </g>
         <defs>
           <clipPath id="clip0_428_287">
-          <rect width="18" height="18" fill="white"/>
+            <rect width="18" height="18" fill="white"/>
           </clipPath>
         </defs>
       </svg>

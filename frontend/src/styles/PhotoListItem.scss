@@ -3,12 +3,13 @@
   padding: 8px;
   border-width: 0.5px;
   border-color: lightgray;
+  background-color: rgb(242, 242, 248);
   border-style: solid;
   border-radius: 8px;
   max-width: fit-content;
 
-  -webkit-box-shadow: inset -1px 3px 8px 5px #ffffff, 2px 5px 16px 0px #041323, 5px 5px 15px 5px rgba(0,0,0,0); 
-  box-shadow: inset -1px 3px 8px 5px #ebebeb, 2px 5px 16px 0px #051528, 5px 5px 15px 5px rgba(0,0,0,0);
+  -webkit-box-shadow: 0px 5px 15px -7px #929292; 
+box-shadow: 0px 5px 15px -7px #929292;
 }
 
 // .photo-list__image {
