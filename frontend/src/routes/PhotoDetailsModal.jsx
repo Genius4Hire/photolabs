@@ -2,11 +2,8 @@ import React from 'react';
 
 import '../styles/PhotoDetailsModal.scss';
 
-import PhotoFavButton from '../components/PhotoFavButton';
 import PhotoList from '../components/PhotoList';
-
-// props
-// modalToggler={modalToggler}
+import PhotoFavButton from '../components/PhotoFavButton';
 
 export const PhotoDetailsModal = (props) => {
 
@@ -32,6 +29,11 @@ export const PhotoDetailsModal = (props) => {
           </svg>
         </button>
       </div>
+      <PhotoFavButton
+        photo={props.photo}
+        searchForFavs={props.searchForFavs}
+        likeToggler={props.likeToggler}
+      />
       <img className="photo-details-modal__image" src={props.modalToggler().urls.full}></img>
       <div className="photo-list__user-info">
         <img className="photo-list__user-profile" src={props.photo.user.profile}></img>
