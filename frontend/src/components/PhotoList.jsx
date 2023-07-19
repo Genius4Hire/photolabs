@@ -3,12 +3,6 @@ import React from 'react';
 import '../styles/PhotoList.scss';
 import PhotoListItem from './PhotoListItem';
 
-// props
-// photos={mockPhotos}
-// searchForFavs={searchForFavs}
-// likeToggler={likeToggler}
-
-
 const PhotoList = (props) => {
   return (
     <ul className="photo-list">
@@ -18,6 +12,7 @@ const PhotoList = (props) => {
           photo={photo}
           searchForFavs={props.searchForFavs}
           likeToggler={props.likeToggler}
+          modalToggler={props.modalToggler}
         />
       )}
     </ul>

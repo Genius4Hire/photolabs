@@ -6,10 +6,6 @@ import '../styles/PhotoFavButton.scss';
 ///////////// Components ///////////////
 import FavIcon from '../components/FavIcon';
 
-// props:
-// photo={props.photo}
-// searchForFavs={props.searchForFavs}
-// likeToggler={props.likeToggler}
 
 const PhotoFavButton = (props) => {
   

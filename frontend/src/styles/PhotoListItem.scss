@@ -3,24 +3,22 @@
   padding: 8px;
   border-width: 0.5px;
   border-color: lightgray;
-  background-color: rgb(242, 242, 248);
   border-style: solid;
   border-radius: 8px;
   max-width: fit-content;
-
-  -webkit-box-shadow: 0px 5px 15px -7px #929292; 
-box-shadow: 0px 5px 15px -7px #929292;
+  -webkit-box-shadow: inset -1px 3px 8px 5px #ffffff, 2px 5px 16px 0px #041323, 5px 5px 15px 5px rgba(0,0,0,0); 
+  box-shadow: inset -1px 3px 8px 5px #ebebeb, 2px 5px 16px 0px #051528, 5px 5px 15px 5px rgba(0,0,0,0);
 }
 
-// .photo-list__image {
-//   user-select: none;
-//   width: 300px;
-//   height: 200px;
-//   object-fit: cover;
-// }
+.photo-list__image {
+  user-select: none;
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
 
 .photo-list__image {
-  border-radius: 8px;
+  border-radius: 8px 8px 0px 0px;
   user-select: none;
   width: 300px;
   height: 200px;
@@ -28,13 +26,12 @@ box-shadow: 0px 5px 15px -7px #929292;
 }
 
 .photo-list__user-profile {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   object-fit: cover;
   border-radius: 100%;
   vertical-align: middle;
-  margin-right: 8px;
+  padding-right: 10px;
+  height: 40px;
+  width: 40px;
 }
 
 .photo-list__user-details {
@@ -42,16 +39,16 @@ box-shadow: 0px 5px 15px -7px #929292;
 }
 
 .photo-list__user-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   margin-top: 5px;
   font-weight: 700;
   font-size: 12px;
   margin-left: 8px;
 }
 
-.photo-list__user-info a {
-  text-decoration:none;  /* Get rid of underline for link */
-}
-
 .photo-list__user-location {
   color: #838383;
+  font-weight: 500;
 }

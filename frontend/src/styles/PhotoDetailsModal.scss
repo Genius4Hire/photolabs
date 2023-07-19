@@ -1,8 +1,8 @@
 .photo-details-modal {
   background-color: white;
-  box-shadow: 0 0 0 50vmax rgba(0,0,0,.5);
+  box-shadow: 0 0 0 50vmax rgba(0,0,0,.65);
   position: absolute;
-  top: 55%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -40%);
   height: 80%;
@@ -25,13 +25,16 @@
 }
 
 .photo-details-modal__images {
-  margin-left: 36px;
-  margin-top: 8px;
+  margin: 8px;
 }
 
 .photo-details-modal__image {
-  max-width: 95%;
-  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 70%;
+  margin: 0 15% 0 15%;
+
 }
 
 .photo-details-modal__top-bar {
@@ -52,7 +55,9 @@
   font-size: 18px;
   font-weight: 500;
   color: #1e1e1e;
-  margin-top: 24px;
-  margin-bottom: 24px;
+  margin: 20px;
   width: 90%;
+  padding-top: 15px;
+  border-top: 1px solid gray;
+
 }
