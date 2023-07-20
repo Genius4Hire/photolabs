@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 
 // Hooks and Helpers
 import useApplicationData from './hooks/useApplication';
@@ -12,29 +13,28 @@ import './App.scss';
 const App = () => {
 
   //import hooks
-  const { state, modalToggler, favToggler, onCloseModal } = useApplicationData();
-  const { photos, topics, favedPhotos, modalActive, selectedPhoto} = state;
+  const { state, modalToggler, favToggler, onCloseModal, newTopic} = useApplicationData();
+  const { photos, topics, favedPhotos, modalActive, modalPhoto, currentTopic } = state;
 
   return (
     <div className="App">
       < HomeRoute
         photos={photos}
         topics={topics}
-
+        currentTopic={currentTopic}
+        newTopic={newTopic}
         modalToggler={modalToggler}
         likeToggler={favToggler}
         favedPhotos={favedPhotos}
-        // searchForFavs={searchForFavs}
 
       />
       {modalActive &&
         <PhotoDetailsModal
-          photo={selectedPhoto}
+          photo={modalPhoto}
           modalToggler={modalToggler}
+          onCloseModal={onCloseModal}
           likeToggler={favToggler}
           favedPhotos={favedPhotos}
-          onCloseModal={onCloseModal}
-          // searchForFavs={searchForFavs}
         />
       }
     </div>

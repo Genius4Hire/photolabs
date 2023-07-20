@@ -1,10 +1,17 @@
 import React from 'react';
 import '../styles/TopicListItem.scss';
 
+
 const TopicListItem = (props) => {
+  const topic = props.topic;
+
+  const newTopicHandler = () => {
+    props.newTopic(topic);
+  };
+
   return (
-    <div className="topic-list__item">
-      <span>{props.title}</span>
+    <div className="topic-list__item" onClick={newTopicHandler}>
+      <span>{topic.title}</span>
     </div>
   );
 };

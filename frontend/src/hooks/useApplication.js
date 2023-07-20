@@ -1,23 +1,25 @@
 /* eslint-disable */
 
-import {useState, useReducer} from 'react';
-
-import photos from "../mocks/photos";
-import topics from "../mocks/topics";
+import {useState, useReducer, useEffect} from 'react';
+import axios from 'axios';
 
 // initial states
 const initialState = {
-  photos: photos, 
-  topics: topics, 
+  photos: [], 
+  topics: [], 
+  currentTopic: null,
   favedPhotos: [],
-  selectedPhoto: {},
+  modalPhoto: {},
   modalActive: false,
 } 
 
 export const ACTIONS = {
   MODAL_TOGGLER: 'MODAL_TOGGLER',
   FAV_TOGGLER: 'FAV_TOGGLER',
-  UPDATE_PHOTO_DATA: 'UPDATE_PHOTO_DATA'
+  UPDATE_PHOTO_DATA: 'UPDATE_PHOTO_DATA',
+  CHOOSE_NEW_TOPIC: 'CHOOSE_NEW_TOPIC',
+  SET_PHOTO_DATA: 'SET_PHOTO_DATA',
+  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
 }
 
 const reducer = (state, action) => {
@@ -45,7 +47,7 @@ const reducer = (state, action) => {
      break;
 
     case ACTIONS.UPDATE_PHOTO_DATA :
-      newState.selectedPhoto = action.payload;
+      newState.modalPhoto = action.payload;
     break;
   
     case ACTIONS.FAV_TOGGLER : 
@@ -70,8 +72,21 @@ const reducer = (state, action) => {
       };
     break;
 
+    case ACTIONS.SET_PHOTO_DATA :
+      newState.photos = action.payload;
+    break;
+
+    case ACTIONS.CHOOSE_NEW_TOPIC :
+      newState.currentTopic = action.payload;
+    break;
+      
+    case ACTIONS.SET_TOPIC_DATA :
+      newState.topics = action.payload;
+    break;
+
     default: 
       console.log(`No actions were met with type ${action.type}`)
+    break;
   }
   return newState;
 };
@@ -80,10 +95,40 @@ export default function useApplicationData() {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
+
+
+  useEffect(() => {
+    const photosPromise = axios.get("/api/photos");
+    const topicsPromise = axios.get("/api/topics");
+
+    const serverDataPromises = [photosPromise, topicsPromise];
+    
+    Promise.all(serverDataPromises)
+      .then((results) => {
+        dispatch({type: 'SET_PHOTO_DATA', payload: results[0].data});
+        dispatch({type: 'SET_TOPIC_DATA', payload: results[1].data});
+      });
+    
+  }, []);
+
+  useEffect(() => {
+    let photoPromise = {};
+    
+    state.currentTopic !== null ?
+      photoPromise = axios.get(`/api/topics/photos/${state.currentTopic.id}`) :
+      photoPromise = axios.get("/api/photos");
+
+    const serverDataPromises = [photoPromise];
+    Promise.all(serverDataPromises)
+      .then((results) => {
+        dispatch({type: "SET_PHOTO_DATA", payload: results[0].data});
+      });
+  }, [state.currentTopic]);
+
   // helper functions
+
   const modalToggler = (photo) => {
     if (state.modalActive) return;
-
     dispatch({type: 'UPDATE_PHOTO_DATA', payload: photo})
     dispatch({type: 'MODAL_TOGGLER', payload: !state.modalActive});
   };
@@ -94,14 +139,17 @@ export default function useApplicationData() {
 
   const onCloseModal = () => {
     dispatch({type: 'MODAL_TOGGLER', payload: false})
-  }
+  };
 
-  // console.log("Current state",state);
-  
+  const newTopic = (topic) => {
+    dispatch({type: 'CHOOSE_NEW_TOPIC', payload: topic});
+  };
+
   return {
     state,
     modalToggler,
     favToggler,
     onCloseModal,
+    newTopic,
   };
 }
