@@ -9,8 +9,10 @@ export const PhotoDetailsModal = (props) => {
 
   const closeModal = () => {
     console.log("Closing modal..");
-    props.modalToggler(null);
+    props.onCloseModal();
   };
+
+  console.log(props.photo);
 
   return (
     <div className='photo-details-modal'>
@@ -31,10 +33,10 @@ export const PhotoDetailsModal = (props) => {
       </div>
       <PhotoFavButton
         photo={props.photo}
-        searchForFavs={props.searchForFavs}
+        favedPhotos={props.favedPhotos}
         likeToggler={props.likeToggler}
       />
-      <img className="photo-details-modal__image" src={props.modalToggler().urls.full}></img>
+      <img className="photo-details-modal__image" src={props.photo.urls.full}></img>
       <div className="photo-list__user-info">
         <img className="photo-list__user-profile" src={props.photo.user.profile}></img>
         <div>
@@ -52,7 +54,7 @@ export const PhotoDetailsModal = (props) => {
           photos={Object.values(props.photo.similarPhotos)}
           likeToggler={props.likeToggler}
           modalToggler={() => {}}
-          searchForFavs={props.searchForFavs}
+          favedPhotos={props.favedPhotos}
         />
       </div>
     </div>

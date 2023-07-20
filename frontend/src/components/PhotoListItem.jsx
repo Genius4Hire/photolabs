@@ -22,7 +22,7 @@ const PhotoListItem = (props) => {
       <div className={"photo-list__item"} >
         <PhotoFavButton
           photo={props.photo}
-          searchForFavs={props.searchForFavs}
+          favedPhotos={props.favedPhotos}
           likeToggler={props.likeToggler}
         />
         <img onClick={modalToggleHandler} className="photo-list__image" src={props.photo.urls.regular}></img>

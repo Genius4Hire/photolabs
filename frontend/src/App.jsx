@@ -10,30 +10,31 @@ import PhotoDetailsModal from './routes/PhotoDetailsModal';
 import './App.scss';
 
 const App = () => {
-  
-  //import hooks
-  const { state, helpers } = useApplicationData();
 
-  // bust out states, and helpers
-  const [photos, topics, favedPhotos, modalToggle] = state;
-  const [modalToggler, favToggler, searchForFavs,] = helpers;
+  //import hooks
+  const { state, modalToggler, favToggler, onCloseModal } = useApplicationData();
+  const { photos, topics, favedPhotos, modalActive, selectedPhoto} = state;
 
   return (
     <div className="App">
       < HomeRoute
         photos={photos}
         topics={topics}
+
         modalToggler={modalToggler}
         likeToggler={favToggler}
-        searchForFavs={searchForFavs}
+        favedPhotos={favedPhotos}
+        // searchForFavs={searchForFavs}
 
       />
-      {modalToggler() &&
+      {modalActive &&
         <PhotoDetailsModal
-          photo={modalToggle}
+          photo={selectedPhoto}
           modalToggler={modalToggler}
           likeToggler={favToggler}
-          searchForFavs={searchForFavs}
+          favedPhotos={favedPhotos}
+          onCloseModal={onCloseModal}
+          // searchForFavs={searchForFavs}
         />
       }
     </div>

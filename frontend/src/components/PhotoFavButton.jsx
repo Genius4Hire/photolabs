@@ -13,11 +13,13 @@ const PhotoFavButton = (props) => {
     props.likeToggler(props.photo);
   };
 
+  const isLiked = props.favedPhotos.find(photo => photo.id === props.photo.id);
+
   return (
     <div className="photo-list__fav-icon" onClick={toggler}>
       <div className="photo-list__fav-icon-svg">
         <FavIcon
-          isLiked={props.searchForFavs(props.photo)}
+          isLiked={isLiked}
           width={20}
           height={17}
         />

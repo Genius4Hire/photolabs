@@ -10,6 +10,7 @@ import '../styles/PhotoFavButton.scss';
 // searchForFavs={props.searchForFavs}
 
 const FavIcon = (props) => {
+  
   return (
     <svg
       width={props.width || 20}

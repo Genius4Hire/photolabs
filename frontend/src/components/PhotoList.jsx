@@ -10,7 +10,7 @@ const PhotoList = (props) => {
         <PhotoListItem
           key={index}
           photo={photo}
-          searchForFavs={props.searchForFavs}
+          favedPhotos={props.favedPhotos}
           likeToggler={props.likeToggler}
           modalToggler={props.modalToggler}
         />

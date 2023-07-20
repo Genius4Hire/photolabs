@@ -17,7 +17,7 @@ const TopNavigation = (props) => {
         topics={props.topics}
       />
       < FavBadge
-        searchForFavs={props.searchForFavs}
+        favedPhotos={props.favedPhotos}
       />
     </div>
   );

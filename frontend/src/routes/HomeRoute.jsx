@@ -9,11 +9,11 @@ const HomeRoute = (props) => {
     <div>
       < TopNavigation
         topics={props.topics}
-        searchForFavs={props.searchForFavs}
+        favedPhotos={props.favedPhotos}
       />
       < PhotoList
         photos={props.photos}
-        searchForFavs={props.searchForFavs}
+        favedPhotos={props.favedPhotos}
         likeToggler={props.likeToggler}
         modalToggler={props.modalToggler}
       />

@@ -1,81 +1,107 @@
 /* eslint-disable */
 
-import {useState} from 'react';
+import {useState, useReducer} from 'react';
 
-import mockPhotos from "../mocks/photos";
-import mockTopics from "../mocks/topics";
+import photos from "../mocks/photos";
+import topics from "../mocks/topics";
 
-export default function useApplicationData(props) {
+// initial states
+const initialState = {
+  photos: photos, 
+  topics: topics, 
+  favedPhotos: [],
+  selectedPhoto: {},
+  modalActive: false,
+} 
 
-  // initial states
-  const [photos, setPhotos] = useState(mockPhotos);
-  const [topics, setTopics] = useState(mockTopics);
-  const [favedPhotos, setFavedPhotos] = useState([]);
-  const [modalToggle, setModalToggle] = useState(null);
+export const ACTIONS = {
+  MODAL_TOGGLER: 'MODAL_TOGGLER',
+  FAV_TOGGLER: 'FAV_TOGGLER',
+  UPDATE_PHOTO_DATA: 'UPDATE_PHOTO_DATA'
+}
 
-  // helper functions
-  const modalToggler = (photo) => {
-    if (photo === undefined)
-      return modalToggle;
-    if (photo !== null) {
-      setModalToggle(photo);
-      return true; // return pre-state
-    } else {
-      setModalToggle(null);
-      return false; // return pre-state
-    }
-  };
-
-  const searchForFavs = (photo) => {
-
-    if (photo !== undefined) {
-      return favedPhotos.includes(photo);
-    } else {
-      return (favedPhotos.length === 0) ? false : true;
-    }
-  };
+const reducer = (state, action) => {
 
   const addFave = (photo) => {
     const newList = [
-      ...favedPhotos,
+      ...state.favedPhotos,
       photo
     ];
-    // console.log("Faving: ", photo.id);
-    setFavedPhotos(newList);
+    return newList;
   };
 
   const delFave = (photo) => {
-    const newList = favedPhotos.filter((element) => {
+    const newList = state.favedPhotos.filter((element) => {
       return (element !== photo);
     });
-    // console.log("Unfaving: ", photo.id);
-    setFavedPhotos(newList);
+    return newList;
+  }; 
+
+  const newState = {...state};
+
+  switch (action.type) {
+    case ACTIONS.MODAL_TOGGLER : 
+      newState.modalActive = action.payload;
+     break;
+
+    case ACTIONS.UPDATE_PHOTO_DATA :
+      newState.selectedPhoto = action.payload;
+    break;
+  
+    case ACTIONS.FAV_TOGGLER : 
+      // const favToggler = (photo) => {
+        const isFav = state.favedPhotos.findIndex(photo => photo.id === action.payload.id)
+      if (isFav !== -1) {
+        newState.favedPhotos = delFave(action.payload);
+      } else {
+        newState.favedPhotos = addFave(action.payload);
+      }
+    break;
+
+    case ACTIONS.SEARCH_FOR_FAVS : 
+      if (action.payload !== undefined) {
+        newState.favedPhotos = state.favedPhotos.includes(action.payload);
+      } else {
+        if (state.favedPhotos.length === 0) {
+          newState.favedPhotos = false;
+        } else {
+          newState.favedPhotos = true;
+        }
+      };
+    break;
+
+    default: 
+      console.log(`No actions were met with type ${action.type}`)
+  }
+  return newState;
+};
+
+export default function useApplicationData() {
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  // helper functions
+  const modalToggler = (photo) => {
+    if (state.modalActive) return;
+
+    dispatch({type: 'UPDATE_PHOTO_DATA', payload: photo})
+    dispatch({type: 'MODAL_TOGGLER', payload: !state.modalActive});
   };
 
   const favToggler = (photo) => {
-    if (searchForFavs(photo)) {
-      delFave(photo);
-    } else {
-      addFave(photo);
-    }
-
+    dispatch({type: 'FAV_TOGGLER', payload: photo});
   };
 
-  const state = [
-    photos,
-    topics,
-    favedPhotos,
-    modalToggle
-  ];
+  const onCloseModal = () => {
+    dispatch({type: 'MODAL_TOGGLER', payload: false})
+  }
 
-  const helpers = [
-    modalToggler,
-    favToggler,
-    searchForFavs,
-  ];
-
+  // console.log("Current state",state);
+  
   return {
     state,
-    helpers
+    modalToggler,
+    favToggler,
+    onCloseModal,
   };
 }
