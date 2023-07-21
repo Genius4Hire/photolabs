@@ -19,13 +19,16 @@ const TopNavigation = (props) => {
         className="top-nav-bar__logo"
         onClick={topicResetHandler}
       >PhotoLabs</span>
-      < TopicList
-        topics={props.topics}
-        newTopic={props.newTopic}
-      />
-      < FavBadge
-        favedPhotos={props.favedPhotos}
-      />
+      <span className="top-nav-topics">
+        < TopicList
+          topics={props.topics}
+          newTopic={props.newTopic}
+        />
+        < FavBadge
+          favedPhotos={props.favedPhotos}
+        />
+
+      </span>
     </div>
   );
 };
