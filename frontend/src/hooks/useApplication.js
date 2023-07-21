@@ -13,7 +13,7 @@ const initialState = {
   modalActive: false,
 } 
 
-export const ACTIONS = {
+const ACTIONS = {
   MODAL_TOGGLER: 'MODAL_TOGGLER',
   FAV_TOGGLER: 'FAV_TOGGLER',
   UPDATE_PHOTO_DATA: 'UPDATE_PHOTO_DATA',
@@ -23,6 +23,8 @@ export const ACTIONS = {
 }
 
 const reducer = (state, action) => {
+
+  // helper functions
 
   const addFave = (photo) => {
     const newList = [
@@ -39,7 +41,11 @@ const reducer = (state, action) => {
     return newList;
   }; 
 
+  // retrieve current state..
+
   const newState = {...state};
+
+  // update state depending on action..
 
   switch (action.type) {
     case ACTIONS.MODAL_TOGGLER : 
@@ -85,9 +91,12 @@ const reducer = (state, action) => {
     break;
 
     default: 
-      console.log(`No actions were met with type ${action.type}`)
+      console.log(`Error trying to ${action.type}`)
     break;
   }
+
+  // update with new state..
+
   return newState;
 };
 
@@ -95,7 +104,7 @@ export default function useApplicationData() {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
-
+  // API (high latency) side effect calls
 
   useEffect(() => {
     const photosPromise = axios.get("/api/photos");
@@ -113,7 +122,7 @@ export default function useApplicationData() {
 
   useEffect(() => {
     let photoPromise = {};
-    
+
     state.currentTopic !== null ?
       photoPromise = axios.get(`/api/topics/photos/${state.currentTopic.id}`) :
       photoPromise = axios.get("/api/photos");
@@ -125,7 +134,7 @@ export default function useApplicationData() {
       });
   }, [state.currentTopic]);
 
-  // helper functions
+  // Helper functions
 
   const modalToggler = (photo) => {
     if (state.modalActive) return;
