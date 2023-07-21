@@ -1,7 +1,31 @@
-# react-photolabs
-The PhotoLabs project for the Web Development React course programming.
+# PhotoLabs
 
-# Photolabs
+PhotoLabs is an advanced ReactJS single-page application (SPA) that grants users the dynamic capability to view digital photographs from manifold perspectives. Under the hood, this cutting-edge platform leverages Postgres and JavaScript to enable a rich viewing experience.
+
+## Final Product
+
+- Main page (desktop)
+!["Screenshot of PhotoLabs desktop page"](https://github.com/genius4hire/photolabs/blob/main/docs/photolabs.png)
+
+- Main page (mobile)
+!["Screenshot of PhotoLabs mobile page"](https://github.com/genius4hire/photolabs/blob/main/docs/photolabs.png)
+
+- Like photos
+!["Screenshot of liked photo and notification"](https://github.com/genius4hire/photolabs/blob/main/docs/like-photo.png)
+
+- Photo details view
+!["Screenshot of modal"](https://github.com/genius4hire/photolabs/blob/main/docs/modal.png)
+
+## Esthetics
+
+This app has a modern look and feel, making it feel like a photo table. Every aspect of the interface is designed to let users easily and quickly explore multiple perspectives as they view their photos. With PhotoLabs, the possibilities are endless.
+
+## Dependencies
+
+- React
+- Express
+- Node v15.14.0
+- Axios
 
 ## Setup
 
@@ -14,7 +38,7 @@ cd frontend
 npm start
 ```
 
-## [Backend] Running Backend Servier
+## [Backend] Running Backend Server
 
 Read `backend/readme` for further setup details.
 

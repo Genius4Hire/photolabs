@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# PhotoLabs
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+PhotoLabs is an advanced ReactJS single-page application (SPA) that grants users the dynamic capability to view digital photographs from manifold perspectives. Under the hood, this cutting-edge platform leverages Postgres and JavaScript to enable a rich viewing experience.
 
-## Available Scripts
+## Final Product
 
-In the project directory, you can run:
+- Main page (desktop)
+!["Screenshot of PhotoLabs main page"](https://github.com/alicelinx/photolabs/blob/main/docs/photolabs.png)
 
-### `npm start`
+- Main page (mobile)
+!["Screenshot of PhotoLabs main page"](https://github.com/alicelinx/photolabs/blob/main/docs/photolabs.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Like photos & notification
+!["Screenshot of liked photo and notification"](https://github.com/alicelinx/photolabs/blob/main/docs/like-photo.png)
 
-### `npm test`
+- Modal with selected photo and similar photos
+!["Screenshot of modal"](https://github.com/alicelinx/photolabs/blob/main/docs/modal.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Esthetics
 
-### `npm run build`
+This app has a modern look and feel, making it feel like a photo table. Every aspect of the interface is designed to let users easily and quickly explore multiple perspectives as they view their photos. With PhotoLabs, the possibilities are endless.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- React
+- Express
+- Node v15.14.0
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Setup
 
-### `npm run eject`
+Install dependencies with `npm install` in each respective `/frontend` and `/backend`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## [Frontend] Running Webpack Development Server
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```sh
+cd frontend
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## [Backend] Running Backend Server
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Read `backend/readme` for further setup details.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```sh
+cd backend
+npm start
+```
