@@ -5,16 +5,16 @@ PhotoLabs is an advanced ReactJS single-page application (SPA) that grants users
 ## Final Product
 
 - Main page (desktop)
-!["Screenshot of PhotoLabs desktop page"](https://github.com/genius4hire/photolabs/blob/main/docs/photolabs.png)
+!["Screenshot of PhotoLabs desktop page"](https://github.com/genius4hire/photolabs/blob/main/docs/photolabsdesktop.jpg)
 
 - Main page (mobile)
-!["Screenshot of PhotoLabs mobile page"](https://github.com/genius4hire/photolabs/blob/main/docs/photolabs.png)
+!["Screenshot of PhotoLabs mobile page"](https://github.com/genius4hire/photolabs/blob/main/docs/photolabsmobile.jpg)
 
 - Like photos
-!["Screenshot of liked photo and notification"](https://github.com/genius4hire/photolabs/blob/main/docs/like-photo.png)
+!["Screenshot of liked photo and notification"](https://github.com/genius4hire/photolabs/blob/main/docs/photolabslikes.jpg)
 
 - Photo details view
-!["Screenshot of modal"](https://github.com/genius4hire/photolabs/blob/main/docs/modal.png)
+!["Screenshot of modal"](https://github.com/genius4hire/photolabs/blob/main/docs/photolabsmodal.jpg)
 
 ## Esthetics
 
